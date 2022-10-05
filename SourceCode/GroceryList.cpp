@@ -370,6 +370,12 @@ void GroceryList::moveToTop( const GroceryItem & groceryItem )
   ///////////////////////// TO-DO (12) //////////////////////////////
   /// If the grocery item exists, then remove and reinsert it.  Otherwise, do nothing.
   /// Remember, you already have functions to do all this.
+  
+    if(auto offset = find(groceryItem); offset != size() )
+  {
+    remove( offset );
+    insert(groceryItem, Position::TOP);
+  }
 
   /////////////////////// END-TO-DO (12) ////////////////////////////
 }
@@ -385,6 +391,8 @@ GroceryList & GroceryList::operator+=( const std::initializer_list<GroceryItem> 
   /// containers.  The constructor above gives an example.  Remember to add that grocery item at the bottom of each container
   /// (array, vector, list, and forward_list) of this grocery list, and that you already have a function that does that.
 
+    for(const auto& groceryItem :rhs) insert( groceryItem,Position::BOTTOM);
+  
   /////////////////////// END-TO-DO (13) ////////////////////////////
 
   // Verify the internal grocery list state is still consistent amongst the four containers
@@ -403,6 +411,8 @@ GroceryList & GroceryList::operator+=( const GroceryList & rhs )
   /// to traverse. Walk the container you picked inserting its grocery items to the bottom of this grocery list. Remember to add
   /// that grocery item at the bottom of each container (array, vector, list, and forward_list) of this grocery list, and that you
   /// already have a function that does that.
+  
+    for(const auto& groceryItem :rhs._gList_sll) insert( groceryItem,Position::BOTTOM);
 
   /////////////////////// END-TO-DO (14) ////////////////////////////
 
