@@ -117,6 +117,51 @@ int main()
      /// indexed offsets.  Remove grocery items from the top, middle, and bottom.  Create, concatenate, rearrange, and compare
      /// several (more than two) lists. Have some fun with it!  The purpose is to show me you, as a GroceryList class consumer
      /// (i.e., the client) understand how to *use* the GroceryList.
+     {
+    // Let's start planning an all night study session
+    GroceryList thingsToBuy = { { "monster"     },
+                                { "rockstar" },
+                                { "cookies"},
+                                { "water"} };
+                            
+                                
+    // Gotta keep hydrated naturally, moving water to top of the list
+    thingsToBuy.moveToTop( { "water" } );
+
+    // Let's see what's on the list so far
+    std::cout << "My Grocery List" << thingsToBuy << "\n\n";
+
+
+
+    // Need to add a few after study drinks to celebrate!
+    thingsToBuy += { { "cookies" },
+                     { "frappucino"  } };
+
+
+
+
+    // My study partner also wants some items from the store, he prefers healthy study snacks and drinks
+    GroceryList studyPartnerList = { { "granola bar"},
+                                  { "protein bar"},
+                                  { "coffee","Arabica"},
+                                  { "biscotti"},
+                                  { "pretzels"} };
+
+    std::cout << "My study partner's Grocery List" << studyPartnerList << "\n\n";
+
+    // Let's combine the lists (if different) and go shopping
+    if( thingsToBuy != studyPartnerList ) thingsToBuy += studyPartnerList;
+
+
+    // Oops, forgot milk for the cookies.  Let's add that right before cookies.
+    thingsToBuy.insert( { "milk", "lactose free" }, thingsToBuy.find( { "cookies" } ) );
+
+    // No need for frappucino. Too much sugar, partner likes black coffee, and already have milk for the cookies.
+    thingsToBuy.remove( { "frappucino" } );
+
+
+    // Now let's see what's on the list
+    std::cout << "Combined Grocery Lists" << thingsToBuy << "\n\n";
 
     /////////////////////// END-TO-DO (1) ////////////////////////////
   }
